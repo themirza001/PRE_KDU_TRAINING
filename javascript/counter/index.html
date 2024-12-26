@@ -1,12 +1,101 @@
-<!-- 
-Create an HTML page with a simple counter
-Create a simple up-down counter
-Add two buttons “+”, and “-”
-Based on the button clicked, update the value displayed.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Counter</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+      #counter-value {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      #increment {
+        background-color: #4caf50;
+        color: #fff;
+      }
+      #increment:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+      #decrement {
+        background-color: #f44336;
+        color: #fff;
+      }
+      #decrement:hover {
+        background-color: #e53935;
+        transform: scale(1.05);
+      }
+      #resetBtn {
+        background-color: #2196f3;
+        color: #fff;
+      }
+      #resetBtn:hover {
+        background-color: #1e88e5;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="counter-value">0</div>
+      <button id="increment">+</button>
+      <button id="decrement">-</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <script>
+      const increButton = document.getElementById('increment');
+      const decreButton = document.getElementById('decrement');
+      const counterEle = document.getElementById('counter-value');
+      const resetEle = document.getElementById('resetBtn');
 
-Make sure the <div> that renderts the counter value has an id of counter-value
-Make sure the “+” button has an id of increment
-Make sure the “-” button has an id of decrement
+      const handleIncrement = () => {
+        const value = parseInt(counterEle.textContent);
+        counterEle.textContent = value + 1;
+      };
+      const handleDecrement = () => {
+        const value = parseInt(counterEle.textContent);
+        counterEle.textContent = value - 1;
+      };
+      const handleReset = () => {
+        counterEle.textContent = 0;
+      };
 
-The IDs should match or else the tests will fail.
--->
+      increButton.addEventListener('click', handleIncrement);
+      decreButton.addEventListener('click', handleDecrement);
+      resetEle.addEventListener('click', handleReset);
+    </script>
+  </body>
+</html>
