@@ -1,4 +1,5 @@
 <!-- 
+
 Create a webpage with a simple calculator
 Create two fields to take input of two numbers
 Create 4 buttons to perform 4 operations - Add, Subtract, Divide, Multiply
@@ -12,3 +13,152 @@ Make sure the “Divide” button has an id of divide
 
 The IDs should match or else the tests will fail.
  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: bisque;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      .calculator {
+        height: 350px;
+        width: 350px;
+        background-color: #a0522d;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .inputContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .inputContainer input {
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      .operatorContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .operatorContainer button {
+        flex: 1;
+        padding: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        background-color: #6b4226;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .operatorContainer button:hover {
+        background-color: #8b5a2b;
+      }
+      .resultContainer {
+        text-align: center;
+        font-size: 1.5rem;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="inputContainer">
+        <input
+          type="number"
+          id="num1"
+          placeholder="Enter the First Number"
+          onclick="clearResult()"
+        />
+        <input
+          type="number"
+          id="num2"
+          placeholder="Enter the Second Number"
+          onclick="clearResult()"
+        />
+      </div>
+      <div class="operatorContainer">
+        <button id="add">+</button>
+        <button id="subtract" onclick="handleSubmit('-')">-</button>
+        <button id="multiply" onclick="handleSubmit('*')">*</button>
+        <button id="divide" onclick="handleSubmit('/')">/</button>
+      </div>
+      <div class="resultContainer">
+        <h3>Result: <span id="result">0</span></h3>
+      </div>
+    </div>
+    <script>
+      function clearResult() {
+        document.getElementById('result').textContent = 0;
+        return;
+      }
+
+      const addEle = document.getElementById('add');
+      addEle.addEventListener('click', () => handleSubmit('+'));
+
+      const subEle = document.getElementById('subtract');
+      addEle.addEventListener('click', () => handleSubmit('-'));
+
+      const mulEle = document.getElementById('multiply');
+      addEle.addEventListener('click', () => handleSubmit('*'));
+
+      const divEle = document.getElementById('divide');
+      addEle.addEventListener('click', () => handleSubmit('/'));
+
+      function handleSubmit(operator) {
+        const val1 = parseFloat(document.getElementById('num1').value);
+        const val2 = parseFloat(document.getElementById('num2').value);
+
+        if (isNaN(val1) || isNaN(val2)) {
+          alert('Please enter valid numbers in both fields.');
+          return;
+        }
+
+        let result = 0;
+        switch (operator) {
+          case '+':
+            result = val1 + val2;
+            break;
+          case '-':
+            result = val1 - val2;
+            break;
+          case '*':
+            result = val1 * val2;
+            break;
+          case '/':
+            if (val2 === 0) {
+              alert('Division by zero is not allowed.');
+              return;
+            }
+            result = val1 / val2;
+            break;
+          default:
+            alert('Invalid operation.');
+            return;
+        }
+        document.getElementById('result').textContent = result;
+      }
+    </script>
+  </body>
+</html>
