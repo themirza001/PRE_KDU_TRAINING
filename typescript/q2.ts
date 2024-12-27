@@ -16,3 +16,34 @@
   Export the enum Status, the UserStatus tuple type, and the printUserStatus function.
   So that the code can be tested in the test file.
  */
+
+export enum Status {
+  Active = 'Active',
+  Inactive = 'Inactive',
+  Suspended = 'Suspended',
+}
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  role: string | undefined;
+};
+
+export type UserStatus = [User, Status];
+
+let currUser: UserStatus = [
+  {
+    id: 1,
+    name: 'Mirza_Atif',
+    email: 'themirza001@gmail.com',
+    role: 'SDE-Intern',
+  },
+  Status.Active,
+];
+
+export function printUserStatus(obj: [User, Status]): void {
+  console.log(`${obj[0].name} is currently ${obj[1]}`);
+}
+
+printUserStatus(currUser);
