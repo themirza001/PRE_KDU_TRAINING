@@ -27,23 +27,23 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  role: string | undefined;
+  role?: string | undefined;
 };
 
 export type UserStatus = [User, Status];
 
-let currUser: UserStatus = [
-  {
-    id: 1,
-    name: 'Mirza_Atif',
-    email: 'themirza001@gmail.com',
-    role: 'SDE-Intern',
-  },
-  Status.Active,
-];
+// let currUser: UserStatus = [
+//   {
+//     id: 1,
+//     name: 'Mirza_Atif',
+//     email: 'themirza001@gmail.com',
+//     role: 'SDE-Intern',
+//   },
+//   Status.Active,
+// ];
 
 export function printUserStatus(obj: [User, Status]): void {
-  console.log(`${obj[0].name} is currently ${obj[1]}`);
+  console.log(`${obj[0].name} is currently ${obj[1]}.`);
 }
 
-printUserStatus(currUser);
+// printUserStatus(currUser);

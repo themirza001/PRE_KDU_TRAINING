@@ -19,7 +19,7 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  role: string | undefined;
+  role?: string | undefined;
 };
 
 export interface Admin extends User {
